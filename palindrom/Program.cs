@@ -23,10 +23,26 @@ namespace palindrom {
     class Program {
         static void Main(string[] args) {
             string userinput;
+            int startnum = 0;
+            bool palindromstatus;
             Console.WriteLine("skriv ett ord det kanske är en palindrom vem vet :oooo");
+
             userinput = Console.ReadLine();
             char[] Palindrome = userinput.ToCharArray();
-            int PalindromLength = Palindrome.Length;
+            int pLength = Palindrome.Length;
+
+            for (int i = 0; i < pLength; i++) {
+                if (Palindrome[startnum] == Palindrome[pLength-1]) {
+                    Console.WriteLine("true");
+                    pLength--;
+                    startnum++;
+                }
+                else {
+                    Console.WriteLine("ditt ord är inte en palindrom jag gråtar nu");
+                    palindromstatus = false;
+                }
+            }
+
             Console.ReadKey();
         }
     }
