@@ -32,23 +32,25 @@ namespace palindrom
             userinput = Console.ReadLine();
             userinput = userinput.ToLower(); //gör userinput till lowercase för uppercase of lowercase bokstäver är  två olika tecken
 
-            Palindromcheck(userinput);
+            Palindromecheck(userinput);
         }
 
-        static void Palindromcheck(string userinput)
+        static void Palindromecheck(string userinput)
         {
-            int startnum = 0;
             int uinputlength;
-            bool palindromstatus = false;
 
             string[] userinputs = userinput.Split(' ');
             uinputlength = userinputs.Length;
 
             for (int i = 0; i < uinputlength; i++)
             {
-                userinput = userinputs[0].ToString();
+                int pLength = 0;
+                int startnum = 0;
+                bool palindromestatus = false;
+
+                userinput = userinputs[i].ToString();
                 char[] palindrome = userinput.ToCharArray(); //gör userinput till en array
-                int pLength = palindrome.Length; //bestämmer längden på arrayen
+                pLength = palindrome.Length; //bestämmer längden på arrayen
 
                 for (int j = 0; j < pLength; j++) //loopar n antal gånger utifrån hur många tecken som finns i arrayen
                 {
@@ -56,22 +58,22 @@ namespace palindrom
                     {
                         pLength--;
                         startnum++;
-                        palindromstatus = true;
+                        palindromestatus = true;
                     }
                     else
                     {
-                        palindromstatus = false;
-                        i = pLength;
+                        palindromestatus = false;
+                        j = pLength;
                     }
                 } //slutar loopa när den jämfört de ett eller två mittersta tecknen
 
-                if (palindromstatus == false)
+                if (palindromestatus == false)
                 {
-                    Console.WriteLine(userinput + " är inte en palindrom jag gråtar nu");
+                    Console.WriteLine("'" + userinput + "'" + " isnt a palindrome");
                 }
-                else if (palindromstatus == true)
+                else if (palindromestatus == true)
                 {
-                    Console.WriteLine(userinput + " has been successfully palindromed");
+                    Console.WriteLine("'" + userinput + "'" + " is a palindrome");
                 }
                 else
                 {
